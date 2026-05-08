@@ -1,4 +1,4 @@
-/* c.c */
+/* embed.c */
 #include "embed.h"
 
 
