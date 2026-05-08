@@ -3,13 +3,13 @@ ldflags=-lbu
 
 .PHONY: all clean
 
-all: clean c
+all: clean embed
 
-c: c.o
+embed: embed.o
 	cc $(flags) $^ -o $@ $(ldflags)
 
-c.o: c.c c.h
+embed.o: embed.c embed.h
 	cc $(flags) -c $<
 
 clean:
-	rm -f *.o c
+	rm -f *.o embed
