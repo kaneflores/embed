@@ -7,13 +7,13 @@
 #include <stdbool.h>
 #include <assert.h>
 #include <errno.h>
-#include <birchutils.h>
+#include </birchutils.h>
 
 typedef unsigned char int8;
 typedef unsigned short int int16;
 typedef unsigned int int32;
 typedef unsigned long long int int64;
-typedef unsigned _BitInt(128);
+typedef unsigned _BitInt(128) int128;
 
 #define $8 (int8 *)
 #define $6 (int16)
