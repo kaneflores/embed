@@ -23,6 +23,7 @@ typedef unsigned _BitInt(128) int128;
 #define $c (char *)
 #define $i (int)
 
+int16 length(int8*);
 bool compare(int8*, int8*);
 void usage(int8*);
 int main(int,char**);

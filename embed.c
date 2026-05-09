@@ -6,6 +6,32 @@ void usage(int8 &arg){
     fprintf(stderr, "Usage: %s [-h | --help | -a] <identifier>\n", $c arg);
     exit(-1);
 }
+
+int16 length(int8 *str){
+    int16 n;
+    int8 *p;
+
+    for (p=str, n =0; *p; p++, n++);
+
+    return n;
+}
+bool compare(int8 *xs, int8 *ys){// if strings have different lengths, you don't want to overflow emmory
+    bool ret;
+    int8 *px, *py;
+    int16 n, nx, ny;
+
+    nx = length(xs);
+    ny = length(ys);
+    if (nx != ny){
+        return false;
+    }else{
+        n=nx;
+    }
+    
+
+}
+
+
 int main(int argc, char *argv[]) {
     int8 *identifier;
     bool asm;
