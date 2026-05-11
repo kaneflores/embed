@@ -24,9 +24,8 @@ bool compare(int8 *xs, int8 *ys){// if strings have different lengths, you don't
     ny = length(ys);
     if (nx != ny){
         return false;
-    }else{
-        n=nx;
     }
+    for ( n = nx, px = xs, py= ys)
     
 
 }
