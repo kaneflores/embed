@@ -25,7 +25,17 @@ bool compare(int8 *xs, int8 *ys){// if strings have different lengths, you don't
     if (nx != ny){
         return false;
     }
-    for ( n = nx, px = xs, py= ys)
+    for ( n = nx, px = xs, py= ys, ret=true; n; px++, py++, n--){
+        // at each iteration
+        if(*px != *py){
+            ret = false;
+            break;
+
+        }
+
+    }
+    return ret;
+    
     
 
 }
@@ -49,7 +59,7 @@ int main(int argc, char *argv[]) {
         }
                 
         else if (argc == 3) {
-            if (compare($1 argv[1]), $1 "-a"){
+            if (compare($1 argv[1], $1 "-a")){
                 asm= true;
                 identifier = $1 argv[2];
             }
@@ -58,9 +68,15 @@ int main(int argc, char *argv[]) {
             usage($1 argv[0]);
         }
     }
-    printf("asm =\t%s\n"
-        "identifier = '%s'\n",
-            (asm)?"true":"false",
-            $c identifier);
+    // printf("asm =\t%s\n"
+    //     "identifier = '%s'\n",
+    //         (asm)?"true":"false",
+    //         $c identifier);
+    if (compare($1 "abc", $1 "abc")){
+        printf("true\n");
+    }
+    else{
+        printf("false\n");
+    }
     return 0;
 }
