@@ -2,7 +2,7 @@
 #include "embed.h"
 
 
-void usage(int8 &arg){
+void usage(int8 *arg){
     fprintf(stderr, "Usage: %s [-h | --help | -a] <identifier>\n", $c arg);
     exit(-1);
 }
