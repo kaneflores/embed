@@ -23,6 +23,14 @@ typedef unsigned _BitInt(128) int128;
 #define $c (char *)
 #define $i (int)
 
+// makes it possible to analyze different formats
+enum e_language {
+    c =0,
+    asm =1
+};
+typedef enum e_language language;
+
+void printhhdr(int8*, language);
 int16 length(int8*);
 bool compare(int8*, int8*);
 void usage(int8*);
