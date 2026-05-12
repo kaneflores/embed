@@ -40,6 +40,7 @@ bool compare(int8 *xs, int8 *ys){// if strings have different lengths, you don't
 
 }
 
+//headers
 void printhhdr(int8 *identifier, language lang){
     switch (lang) {
         case asm:
