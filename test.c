@@ -1,2 +1,2 @@
 #include <stdio.h>
-int main(){printf("this worked");return 0;}
+int main(){printf("this worked\n");return 0;}
