@@ -41,7 +41,7 @@ bool compare(int8 *xs, int8 *ys){// if strings have different lengths, you don't
 }
 
 //headers
-void printhhdr(int8 *identifier, language lang){
+void printhdr(int8 *identifier, language lang){
     switch (lang) {
         case asm:
             printf("%s: \n", identifier);
@@ -61,13 +61,17 @@ int main(int argc, char *argv[]) {
     language lang;
     lang = c;
 
-    if (argc >2) {
+    identifier = 0;
+    if (argc ==2){
+        identifier = $1 argv[1];
+    }
+    else if (argc >2) {
         if ((compare($1 argv[1], $1 "-h"))
             || (compare($1 argv[1], $1 "--help"))){
                 usage($1 argv[0]);
             }
         
-        if (argc == 2){
+        else if (argc == 2){
             identifier = $1 argv[1];
 
         }
@@ -82,8 +86,13 @@ int main(int argc, char *argv[]) {
             usage($1 argv[0]);
         }
     }
+    
+    else{
+        usage($1 argv[0]);
+    }
 
-    printheader(identifier, asm);
+    printhdr(identifier, lang);
+    return 0;
     //tester
     // printf("asm =\t%s\n"
     //     "identifier = '%s'\n",
@@ -95,5 +104,5 @@ int main(int argc, char *argv[]) {
     // else{
     //     printf("false\n");
     // }
-    return 0;
+    
 }

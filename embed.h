@@ -30,7 +30,7 @@ enum e_language {
 };
 typedef enum e_language language;
 
-void printhhdr(int8*, language);
+void printhdr(int8*, language);
 int16 length(int8*);
 bool compare(int8*, int8*);
 void usage(int8*);
