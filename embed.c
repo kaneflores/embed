@@ -55,9 +55,40 @@ void printhdr(int8 *identifier, language lang){
     return; 
 }
 
+int8 *convert(int8 c, language lang){
+    
+}
 
 void printbody(language lang){
-    int
+    int32 n;
+    signed int ret; 
+    int8 buf[2];
+    int8 *c;
+
+    *buf = *(buf+1) = 0;
+
+    while ((ret = read(0, $c buf, 1))== 1){
+        n++;
+        c = convert(*buf, lang);
+        assert(c);
+        write(1, $c c, length(c));
+        if (n % 16){
+            write(1, "\n\t", 2);
+        }
+        *buf = (*buf+1) = (int8)0;
+    }
+
+    switch(lang){
+        case c:
+            write(1, ";\n", 2);
+            break;
+        case asm:
+        default:
+            write(1, "\n", 1);   
+    }
+
+    return ;
+
 }
 int main(int argc, char *argv[]) {
     int8 *identifier;
