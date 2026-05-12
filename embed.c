@@ -69,6 +69,7 @@ int8 *convert(int8 c, language lang){
             snprintf($c ret, 7, "\\x%.02hhx", (char)c);
             break;
     }
+    return ret;
 }
 
 void printbody(language lang){
