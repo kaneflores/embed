@@ -55,7 +55,7 @@ void printhdr(int8 *identifier, language lang){
     return; 
 }
 
-int8 *convert(int8 c, language lang){
+int8 *convert(int8 ch, language lang){
     static int8 *ret[8];
 
     zero(ret, $2 8);
@@ -76,19 +76,18 @@ void printbody(language lang){
     int32 n;
     signed int ret; 
     int8 buf[2];
-    int8 *c;
+    int8 *ch;
 
-    *buf = *(buf+1) = 0;
-
+    *buf = *(buf+1) = (int8)0;
     while ((ret = read(0, $c buf, 1))== 1){
         n++;
-        c = convert(*buf, lang);
-        assert(c);
-        write(1, $c c, length(c));
+        ch = convert(*buf, lang);
+        assert(ch);
+        write(1, $c ch, length(ch));
         if (n % 16){
             write(1, "\n\t\"", 3);
         }
-        *buf = (*buf+1) = (int8)0;
+        *buf = *(buf+1) = (int8)0;
     }
 
     switch(lang){
