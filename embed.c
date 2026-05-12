@@ -56,6 +56,9 @@ void printhdr(int8 *identifier, language lang){
 }
 
 
+void printbody(language lang){
+    int
+}
 int main(int argc, char *argv[]) {
     int8 *identifier;
     language lang;
@@ -92,6 +95,7 @@ int main(int argc, char *argv[]) {
     }
 
     printhdr(identifier, lang);
+    printbody(lang);
     return 0;
     //tester
     // printf("asm =\t%s\n"
