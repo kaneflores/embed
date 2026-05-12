@@ -49,14 +49,26 @@ void printhdr(int8 *identifier, language lang){
         
         default:
         case c:
-            printf("unsigned char %s[] =\n", identifier);
+            printf("unsigned char %s[] =\n\t\"", identifier);
             break;
     }
     return; 
 }
 
 int8 *convert(int8 c, language lang){
-    
+    static int8 *ret[8];
+
+    zero(ret, $2 8);
+    switch (lang){
+        case asm:
+            snprintf($c ret, 7, "0x%.02hhx", (char)c);
+            break;
+        
+        default:
+        case c:
+            snprintf($c ret, 7, "\\x%.02hhx", (char)c);
+            break;
+    }
 }
 
 void printbody(language lang){
@@ -73,7 +85,7 @@ void printbody(language lang){
         assert(c);
         write(1, $c c, length(c));
         if (n % 16){
-            write(1, "\n\t", 2);
+            write(1, "\n\t\"", 3);
         }
         *buf = (*buf+1) = (int8)0;
     }
