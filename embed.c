@@ -3,7 +3,7 @@
 
 
 void usage(int8 *arg){
-    fprintf(stderr, "Usage: %s [-h | --help | -a] <identifier>\n", $c arg);
+    fprintf(stderr, "Usage: %s [-h | --help | -a] <identifier>\n", arg);
     exit(-1);
 }
 
@@ -54,12 +54,12 @@ void printhdr(int8 *identifier, language lang){
 }
 
 int8 *convert(int8 ch, language lang){
-    static int8 *ret[8];
+    static int8 ret[8];
 
-    zero(ret, $2 8);
+    zero(ret, 8);
     switch (lang){
         case asm:
-            snprintf($c ret, 7, "0x%.02hhx", (char)ch);
+            snprintf((char *)ret, 7, "0x%.02hhx", (char)ch);
             break;
         
         default:
