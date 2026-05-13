@@ -41,7 +41,7 @@ bool compare(int8 *xs, int8 *ys){// if strings have different lengths, you don't
 void printhdr(int8 *identifier, language lang){
     switch (lang) {
         case asm:
-            printf("%s:\n\tdb ", identifier);
+            printf("%s:\n\tdb  ", identifier);// double space print to make it aligned in a certain way
             break;
         
         default:
@@ -85,9 +85,6 @@ void printbody(language lang){
         n++;
         ch = convert(*buf, lang);
         
-        
-        
-
         switch (lang)
         {
         case asm:
@@ -103,8 +100,8 @@ void printbody(language lang){
         default:
         case c:
             write(1, $c ch, length(ch));
-            if (!((n+1)  % 16)){
-                write(1, "\n\t\"", 3);
+            if (!(n % 16)){
+                write(1, "\"\n\t\"", 4);
             }
             break;
         }
@@ -113,11 +110,11 @@ void printbody(language lang){
 
     switch(lang){
         case c:
-            write(1, ";\n", 2);
+            write(1, "\";\n", 3);
             break;
         case asm:
         default:
-            write(1, "\n", 1);   
+            write(1, "\"\n", 1);   
     }
 
     return;
