@@ -49,6 +49,7 @@ void printhdr(int8 *identifier, language lang){
             printf("unsigned char %s[] =\n\t\"", identifier);
             break;
     }
+    fflush(stdout);
     return; 
 }
 
@@ -78,6 +79,9 @@ void printbody(language lang){
     *buf = *(buf+1) = (int8)0;
     n =$4 0;
     while ((ret = read(0, $c buf, 1))== 1){
+        if ((lang == asm) && (n)){
+            write(0, ",", 1);
+        }
         n++;
         ch = convert(*buf, lang);
         write(1, $c ch, length(ch));
