@@ -54,12 +54,12 @@ void printhdr(int8 *identifier, language lang){
 }
 
 int8 *convert(int8 ch, language lang){
-    static int8 ret[8];
+    static int8 *ret[8];
 
-    zero(ret, 8);
+    zero(ret, (int16) 8);
     switch (lang){
         case asm:
-            snprintf((char *)ret, 7, "0x%.02hhx", (char)ch);
+            snprintf((char *) ret, 7, "0x%.02hhx", (char)ch);
             break;
         
         default:
@@ -77,8 +77,8 @@ void printbody(language lang){
     int8 *ch;
 
     *buf = *(buf+1) = (int8)0;
-    n =$4 0;
-    while ((ret = read(0, $c buf, 1))== 1){
+    n =(int32) 0;
+    while ((ret = read(0, (char *) buf, 1))== 1){
         if ((lang == asm) && (n)){
             write(0, ",", 1);
         }
@@ -90,7 +90,7 @@ void printbody(language lang){
         case asm:
             if (n>1)
                 write(1, ",", 1);
-            write(1, $c ch, length(ch));
+            write(1, (char *) ch, length(ch));
             
             if (!(n & 16)){
                 write(1, "\n\tdb ", 5);
@@ -99,7 +99,7 @@ void printbody(language lang){
         
         default:
         case c:
-            write(1, $c ch, length(ch));
+            write(1, (char *) ch, length(ch));
             if (!(n % 16)){
                 write(1, "\"\n\t\"", 4);
             }
@@ -127,32 +127,32 @@ int main(int argc, char *argv[]) {
 
     identifier = 0;
     if (argc ==2){
-        identifier = $1 argv[1];
+        identifier = (int8 *) argv[1];
     }
     else if (argc >2) {
-        if ((compare($1 argv[1], $1 "-h"))
-            || (compare($1 argv[1], $1 "--help"))){
-                usage($1 argv[0]);
+        if ((compare((int8 *) argv[1], (int8 *) "-h"))
+            || (compare((int8 *) argv[1], (int8 *) "--help"))){
+                usage((int8 *) argv[0]);
             }
         
         else if (argc == 2){
-            identifier = $1 argv[1];
+            identifier = (int8 *) argv[1];
 
         }
                 
         else if (argc == 3) {
-            if (compare($1 argv[1], $1 "-a")){
+            if (compare((int8 *) argv[1], (int8 *) "-a")){
                 lang = asm;
-                identifier = $1 argv[2];
+                identifier = (int8 *) argv[2];
             }
         }
         else{
-            usage($1 argv[0]);
+            usage((int8 *) argv[0]);
         }
     }
     
     else{
-        usage($1 argv[0]);
+        usage((int8 *) argv[0]);
     }
 
     printhdr(identifier, lang);
