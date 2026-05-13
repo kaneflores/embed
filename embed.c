@@ -81,7 +81,7 @@ void printbody(language lang){
         n++;
         ch = convert(*buf, lang);
         write(1, $c ch, length(ch));
-        if (n % 16){
+        if (!(n % 16)){
             write(1, "\n\t\"", 3);
         }
         *buf = *(buf+1) = (int8)0;
