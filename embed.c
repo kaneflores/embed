@@ -35,9 +35,6 @@ bool compare(int8 *xs, int8 *ys){// if strings have different lengths, you don't
 
     }
     return ret;
-    
-    
-
 }
 
 //headers
@@ -61,12 +58,12 @@ int8 *convert(int8 ch, language lang){
     zero(ret, $2 8);
     switch (lang){
         case asm:
-            snprintf($c ret, 7, "0x%.02hhx", (char)c);
+            snprintf($c ret, 7, "0x%.02hhx", (char)ch);
             break;
         
         default:
         case c:
-            snprintf($c ret, 7, "\\x%.02hhx", (char)c);
+            snprintf($c ret, 7, "\\x%.02hhx", (char)ch);
             break;
     }
     return ret;
@@ -79,10 +76,10 @@ void printbody(language lang){
     int8 *ch;
 
     *buf = *(buf+1) = (int8)0;
+    n =$4 0;
     while ((ret = read(0, $c buf, 1))== 1){
         n++;
         ch = convert(*buf, lang);
-        assert(ch);
         write(1, $c ch, length(ch));
         if (n % 16){
             write(1, "\n\t\"", 3);
@@ -99,7 +96,7 @@ void printbody(language lang){
             write(1, "\n", 1);   
     }
 
-    return ;
+    return;
 
 }
 int main(int argc, char *argv[]) {
