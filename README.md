@@ -1,4 +1,4 @@
-# embed
+# MiEmbed
 
 A lightweight C utility that reads binary or ASCII data from standard input
 and outputs it as an embeddable data literal in C or x86 assembly format.
